@@ -37,18 +37,14 @@ export default function StoriesPage() {
               href="#"
               className="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-gray-100"
             >
-              <div className="h-48 overflow-hidden relative">
-                <img
-                  src={`https://images.unsplash.com/photo-${
-                    1445205170230 + index * 100
-                  }?w=600&q=80`}
-                  alt={story.title}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&q=80";
-                  }}
-                />
+              <div className="h-48 overflow-hidden relative bg-gradient-to-br from-blue-100 to-purple-100">
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-6xl opacity-20">
+                    {index === 0 && "🌱"}
+                    {index === 1 && "🌍"}
+                    {index === 2 && "🏭"}
+                  </div>
+                </div>
               </div>
               <div className="p-6">
                 <p className="text-sm text-gray-600 mb-2">{story.date}</p>
