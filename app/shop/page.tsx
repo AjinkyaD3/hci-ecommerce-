@@ -25,12 +25,92 @@ const colors = [
   "#7ED321",
 ];
 
-const products = Array.from({ length: 12 }, (_, i) => ({
-  id: `product-${i + 1}`,
-  name: "Men's Winter Jacket",
-  price: 99,
-  image: "/api/placeholder/300/300",
-}));
+const products = [
+  {
+    id: "product-1",
+    name: "Men's Winter Jacket",
+    price: 99,
+    image:
+      "https://images.unsplash.com/photo-1551028719-00167b7e7339?w=400&q=80",
+  },
+  {
+    id: "product-2",
+    name: "Men's Casual Shirt",
+    price: 49,
+    image:
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&q=80",
+  },
+  {
+    id: "product-3",
+    name: "Men's Hoodie",
+    price: 79,
+    image:
+      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80",
+  },
+  {
+    id: "product-4",
+    name: "Men's T-Shirt",
+    price: 29,
+    image:
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80",
+  },
+  {
+    id: "product-5",
+    name: "Men's Jeans",
+    price: 89,
+    image:
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80",
+  },
+  {
+    id: "product-6",
+    name: "Men's Sweater",
+    price: 69,
+    image:
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80",
+  },
+  {
+    id: "product-7",
+    name: "Men's Formal Pants",
+    price: 99,
+    image:
+      "https://images.unsplash.com/photo-1591228127791-8e2ea786086b?w=400&q=80",
+  },
+  {
+    id: "product-8",
+    name: "Men's Polo Shirt",
+    price: 39,
+    image:
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80",
+  },
+  {
+    id: "product-9",
+    name: "Men's Crew Neck",
+    price: 35,
+    image:
+      "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400&q=80",
+  },
+  {
+    id: "product-10",
+    name: "Men's Denim Jacket",
+    price: 109,
+    image:
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400&q=80",
+  },
+  {
+    id: "product-11",
+    name: "Men's Sweatshirt",
+    price: 65,
+    image:
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80",
+  },
+  {
+    id: "product-12",
+    name: "Men's Military Jacket",
+    price: 119,
+    image:
+      "https://images.unsplash.com/photo-1551028719-00167b7e7339?w=400&q=80",
+  },
+];
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState("Jackets");
@@ -140,9 +220,7 @@ export default function ShopPage() {
                 >
                   <div className="aspect-square bg-gradient-to-br from-blue-50 to-purple-50 relative overflow-hidden">
                     <img
-                      src={`https://images.unsplash.com/photo-${
-                        1551028719 + parseInt(product.id.split("-")[1]) * 100
-                      }?w=400&q=80`}
+                      src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
@@ -159,7 +237,7 @@ export default function ShopPage() {
                     </h3>
                     <div className="flex justify-between items-center">
                       <span className="text-2xl font-bold text-blue-600">
-                        ₹{product.price}
+                        ${product.price}
                       </span>
                       <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
                         M

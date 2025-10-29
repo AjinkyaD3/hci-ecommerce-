@@ -7,6 +7,82 @@ import { useRouter } from "next/navigation";
 const sizes = ["XS", "S", "M", "L", "XL", "XXL", "3XL"];
 const colors = ["#D4A574", "#1C1C1E"];
 
+// Mock product database
+const productDatabase: { [key: string]: any } = {
+  "product-1": {
+    name: "Men's Winter Jacket",
+    price: 99,
+    image:
+      "https://images.unsplash.com/photo-1551028719-00167b7e7339?w=800&q=80",
+  },
+  "product-2": {
+    name: "Men's Casual Shirt",
+    price: 49,
+    image:
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80",
+  },
+  "product-3": {
+    name: "Men's Hoodie",
+    price: 79,
+    image:
+      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80",
+  },
+  "product-4": {
+    name: "Men's T-Shirt",
+    price: 29,
+    image:
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
+  },
+  "product-5": {
+    name: "Men's Jeans",
+    price: 89,
+    image:
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80",
+  },
+  "product-6": {
+    name: "Men's Sweater",
+    price: 69,
+    image:
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80",
+  },
+  "product-7": {
+    name: "Men's Formal Pants",
+    price: 99,
+    image:
+      "https://images.unsplash.com/photo-1591228127791-8e2ea786086b?w=800&q=80",
+  },
+  "product-8": {
+    name: "Men's Polo Shirt",
+    price: 39,
+    image:
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&q=80",
+  },
+  "product-9": {
+    name: "Men's Crew Neck",
+    price: 35,
+    image:
+      "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80",
+  },
+  "product-10": {
+    name: "Men's Denim Jacket",
+    price: 109,
+    image:
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80",
+  },
+  "product-11": {
+    name: "Men's Sweatshirt",
+    price: 65,
+    image:
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80",
+  },
+  "product-12": {
+    name: "Men's Military Jacket",
+    price: 119,
+    image:
+      "https://images.unsplash.com/photo-1551028719-00167b7e7339?w=800&q=80",
+  },
+};
+
 export default function ProductPage({ params }: { params: { id: string } }) {
   const [selectedSize, setSelectedSize] = useState("XS");
   const [selectedColor, setSelectedColor] = useState(0);
@@ -14,13 +90,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const addToCart = useCartStore((state) => state.addToCart);
   const router = useRouter();
 
+  const dbProduct = productDatabase[params.id] || productDatabase["product-1"];
+
   const product = {
     id: params.id,
-    name: "Men's winter jacket",
-    price: 99,
+    name: dbProduct.name,
+    price: dbProduct.price,
     color: colors[selectedColor],
     size: selectedSize,
     quantity,
+    image: dbProduct.image,
   };
 
   const total = product.price * quantity;
@@ -32,7 +111,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       price: product.price,
       size: product.size,
       color: `Color ${selectedColor + 1}`,
-      image: "/api/placeholder/300/300",
+      image: product.image,
     });
     alert("Added to cart!");
   };
@@ -51,7 +130,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             {/* Main Image */}
             <div className="aspect-square rounded-2xl mb-4 relative overflow-hidden shadow-xl bg-gradient-to-br from-blue-100 to-purple-100">
               <img
-                src={`https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&q=80`}
+                src={product.image}
                 alt={product.name}
                 className="w-full h-full object-cover"
               />
@@ -118,7 +197,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
             <div className="mb-6">
               <span className="text-3xl font-bold text-blue-600">
-                ₹{product.price}
+                ${product.price}
               </span>
             </div>
 
@@ -206,7 +285,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               onClick={handleAddToCart}
               className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl mb-4 rounded-lg"
             >
-              Add to Cart - ₹{total}
+              Add to Cart - ${total}
             </button>
 
             <p className="text-sm text-gray-600 text-center">

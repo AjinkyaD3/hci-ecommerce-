@@ -1,28 +1,30 @@
+export const dynamic = "force-dynamic";
+
 export default function CategoriesPage() {
   const categories = [
     {
       name: "New Arrivals",
       count: 120,
       image:
-        "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&q=80",
+        "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=600&fit=crop&q=80",
     },
     {
       name: "Men's Collection",
       count: 350,
       image:
-        "https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80",
+        "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&h=600&fit=crop&q=80",
     },
     {
       name: "Women's Collection",
       count: 400,
       image:
-        "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80",
+        "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=600&fit=crop&q=80",
     },
     {
       name: "Sale Items",
       count: 89,
       image:
-        "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80",
+        "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=600&fit=crop&q=80",
     },
   ];
 
